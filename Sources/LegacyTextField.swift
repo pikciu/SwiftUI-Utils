@@ -4,12 +4,12 @@ import UIKit
 public struct LegacyTextField: UIViewRepresentable {
     @Binding var text: String
     let configuration: (UITextField) -> Void
-    let onSubmit: () -> Void
+    let onSubmit: (UITextField) -> Void
     
     public init(
         text: Binding<String>,
         configuration: @escaping (UITextField) -> Void,
-        onSubmit: @escaping () -> Void
+        onSubmit: @escaping (UITextField) -> Void
     ) {
         self._text = text
         self.configuration = configuration
@@ -35,9 +35,9 @@ public struct LegacyTextField: UIViewRepresentable {
 
     final public class Coordinator: NSObject, UITextFieldDelegate {
         var text: Binding<String>
-        let onSubmit: () -> Void
+        let onSubmit: (UITextField) -> Void
 
-        init(text: Binding<String>, onSubmit: @escaping () -> Void) {
+        init(text: Binding<String>, onSubmit: @escaping (UITextField) -> Void) {
             self.text = text
             self.onSubmit = onSubmit
         }
@@ -47,7 +47,7 @@ public struct LegacyTextField: UIViewRepresentable {
         }
 
         public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            onSubmit()
+            onSubmit(textField)
             return false
         }
     }

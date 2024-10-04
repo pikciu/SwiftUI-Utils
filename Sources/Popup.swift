@@ -66,12 +66,10 @@ struct PopupModifier<PopupView: View>: ViewModifier {
                                     isPresented = false
                                 }
                             }
-                            .safeAreaPadding(.bottom)
-                            .transition(.move(edge: .bottom))
                             .zIndex(1)
                     }
                 }
-                .ignoresSafeArea()
+                .ignoresSafeArea(.container)
                 .clearBackground {
                     withAnimation {
                         isContentPresented = true
