@@ -6,7 +6,7 @@ public struct LegacyTextField: UIViewRepresentable {
     let configuration: (UITextField) -> Void
     let onSubmit: () -> Void
     
-    init(
+    public init(
         text: Binding<String>,
         configuration: @escaping (UITextField) -> Void,
         onSubmit: @escaping () -> Void
