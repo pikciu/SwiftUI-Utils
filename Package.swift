@@ -3,19 +3,19 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUI+Utils",
+    name: "SwiftUI-Utils",
     platforms: [
         .iOS(.v17),
     ],
     products: [
         .library(
-            name: "SwiftUI+Utils",
-            targets: ["SwiftUI+Utils"]
+            name: "SwiftUI-Utils",
+            targets: ["SwiftUI-Utils"]
         ),
     ],
     targets: [
         .target(
-            name: "SwiftUI+Utils",
+            name: "SwiftUI-Utils",
             path: "Sources"
         ),
     ]
