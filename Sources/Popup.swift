@@ -4,14 +4,14 @@ extension View {
 
     public func popup(
         isPresented: Binding<Bool>,
-        popupView: @escaping () -> some View
+        popupView: @escaping @MainActor () -> some View
     ) -> some View {
         modifier(PopupModifier(isPresented: isPresented, popupView: popupView))
     }
     
     public func popup<T: Sendable>(
         onChange: Binding<T?>,
-        popupView: @escaping (T) -> some View
+        popupView: @escaping @MainActor (T) -> some View
     ) -> some View {
         let popup = PopupModifier(isPresented: onChange.isNotNil()) {
             popupView(onChange.wrappedValue!)
