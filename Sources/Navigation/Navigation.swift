@@ -9,6 +9,11 @@ public final class Navigation<T: Route> {
     public func push(_ route: T) {
         stack.append(route)
     }
+    
+    @discardableResult
+    public func pop() -> T {
+        stack.removeLast()
+    }
 
     public func popToRoot() {
         stack.removeAll()
